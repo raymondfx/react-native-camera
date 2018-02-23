@@ -31,6 +31,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Nullable;
@@ -705,7 +706,7 @@ public class RCTCameraModule extends ReactContextBaseJavaModule
         }
 
         // Create a media file name
-        String fileName = String.format("%s", new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()));
+        String fileName = String.format("%s", new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date()));
 
         if (type == MEDIA_TYPE_IMAGE) {
             fileName = String.format("IMG_%s.jpg", fileName);
@@ -721,7 +722,7 @@ public class RCTCameraModule extends ReactContextBaseJavaModule
 
     private File getTempMediaFile(int type) {
         try {
-            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
             File outputDir = _reactContext.getCacheDir();
             File outputFile;
 
